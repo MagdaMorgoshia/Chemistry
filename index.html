@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .element {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #333;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .element:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .element-symbol {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .description {
+            display: none;
+        }
+
+        .description img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .description h2 {
+            margin-top: 0;
+        }
+
+        .description p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elements">
+        <!-- You can generate these dynamically using JavaScript -->
+        <div class="element" id="H"><span class="element-symbol">H</span></div>
+        <div class="element" id="He"><span class="element-symbol">He</span></div>
+        <!-- Add more elements as needed -->
+    </div>
+
+
+    <div id="elementInfo"></div>
+
+    <script>
+        // Add event listeners to each element after the DOM has loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.element').forEach(element => {
+                element.addEventListener('click', function () {
+                    // Clear previous descriptions
+                    document.querySelectorAll('.description').forEach(desc => {
+                        desc.style.display = 'none';
+                    });
+                    // Show description for the clicked element
+                    let elementId = this.id;
+                    let description = document.getElementById(`${elementId}_description`);
+                    description.style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Descriptions for each element -->
+    <div id="descriptions">
+        <!-- Add descriptions for each element -->
+        <div class="description" id="H_description" style="display: none;">
+            <h2>Hydrogen (H)</h2>
+            <p>Hydrogen is a chemical element with symbol H and atomic number 1.</p>
+            <img width="1024" src="https://www.tutorialspoint.com/chemistry_part2/images/hydrogen.jpg" alt="Hydrogen">
+        </div>
+        <div class="description" id="He_description" style="display: none;">
+            <h2>Helium (He)</h2>
+            <p>Helium is a chemical element with symbol He and atomic number 2.</p>
+            <img width="1024"
+                src="https://cdn.britannica.com/98/22398-050-C3608B35/element-helium-symbol-square-properties-some-periodic.jpg"
+                alt="Helium">
+        </div>
+        <!-- Add more descriptions as needed -->
+    </div>
+
+</body>
+
+</html>
